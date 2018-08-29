@@ -5,19 +5,26 @@ import { CommonModule } from '@angular/common';
 import { BaseComponent } from './base/base.component';
 import { BaseService } from './base/base.service';
 import { PesanComponent } from './pesan/pesan.component';
+import { AjaxLoaderComponent } from './ajax/ajax-loader.component';
+import { AjaxKecilComponent } from './ajax/ajax-kecil.component';
+
 import { NodataComponent } from './nodata/nodata.component';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { httpInterceptorProviders } from './base/interceptor';
+import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
 
 @NgModule({
   imports: [
     CommonModule,
-    HttpClientModule
+    HttpClientModule,
+    NgxPaginationModule
   ],
   declarations: [
     BaseComponent,
     PesanComponent,
-    NodataComponent
+    NodataComponent,
+    AjaxLoaderComponent,
+    AjaxKecilComponent,
   ],
   exports: [
     CommonModule,
@@ -25,7 +32,10 @@ import { httpInterceptorProviders } from './base/interceptor';
     PesanComponent,
     BaseComponent,
     NodataComponent,
-    HttpClientModule
+    HttpClientModule,
+    AjaxKecilComponent,
+    AjaxLoaderComponent,
+    NgxPaginationModule
 ],
   providers: [
     BaseService,

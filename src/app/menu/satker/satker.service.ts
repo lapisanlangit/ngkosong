@@ -4,51 +4,51 @@ import { Observable } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 
 import { HttpClient } from '@angular/common/http';
-import { Kppn } from './kppn';
+import { Satker } from './satker';
 
 
 @Injectable({
   providedIn: 'root'
 })
-export class KppnService extends BaseService {
+export class SatkerService extends BaseService {
 
   constructor(private http: HttpClient) {
     super();
 
   }
 
-  public getKPPN(): Observable<Kppn[]> {
-    return this.http.get<Kppn[]>(this.URL_ROOT + 'rkppn/getKPPN')
+  public getSatker(): Observable<Satker[]> {
+    return this.http.get<Satker[]>(this.URL_ROOT + 'rsatker/getSatker')
       .pipe(
         retry(3),
         catchError(this.handleError) // then handle the error
       );
   }
 
-  public cekKppn(nilaiSimpan:Kppn): Observable<Kppn[]> {
-    return this.http.post<Kppn[]>(this.URL_ROOT + 'rkppn/cekKppn',nilaiSimpan)
+  public cekSatker(nilaiSimpan:Satker): Observable<Satker[]> {
+    return this.http.post<Satker[]>(this.URL_ROOT + 'rsatker/cekSatker',nilaiSimpan)
       .pipe(
         catchError(this.handleError) // then handle the error
       );
   }
 
-  public saveKppn(nilaiSimpan:Kppn): Observable<Kppn[]> {
-    return this.http.post<Kppn[]>(this.URL_ROOT + 'rkppn/saveKppn',nilaiSimpan)
+  public saveSatker(nilaiSimpan:Satker): Observable<Satker[]> {
+    return this.http.post<Satker[]>(this.URL_ROOT + 'rsatker/saveSatker',nilaiSimpan)
       .pipe(
         catchError(this.handleError) // then handle the error
       );
   }
 
-  public updateKppn(nilaiSimpan:Kppn): Observable<Kppn[]> {
-    return this.http.post<Kppn[]>(this.URL_ROOT + 'rkppn/updateKppn',nilaiSimpan)
+  public updateSatker(nilaiSimpan:Satker): Observable<Satker[]> {
+    return this.http.post<Satker[]>(this.URL_ROOT + 'rsatker/updateSatker',nilaiSimpan)
       .pipe(
         catchError(this.handleError) // then handle the error
       );
   }
 
   
-  public hapusKppn(nilaiSimpan:any): Observable<Kppn[]> {
-    return this.http.post<any>(this.URL_ROOT + 'rkppn/hapusKppn',nilaiSimpan)
+  public hapusSatker(nilaiSimpan:any): Observable<Satker[]> {
+    return this.http.post<any>(this.URL_ROOT + 'rsatker/hapusSatker',nilaiSimpan)
       .pipe(
         catchError(this.handleError) // then handle the error
       );

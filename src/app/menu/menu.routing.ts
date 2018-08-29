@@ -13,7 +13,7 @@ const MenuRoutes: Routes = [
         // canActivateChild: [AuthGuard],
          children: [
           { path: 'satker', component: SatkerComponent },
-          { path: 'kppn', component: KppnComponent },
+          { path: 'kppn', component: KppnComponent }
         
     ]
     },

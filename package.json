@@ -23,7 +23,9 @@
     "@ngxs/devtools-plugin": "^3.2.0",
     "@ngxs/logger-plugin": "^3.1.4-dev.master-b50211a",
     "@ngxs/store": "^3.1.4-dev.master-b50211a",
+    "angular2-text-mask": "^9.0.0",
     "core-js": "^2.5.4",
+    "ngx-pagination": "^3.2.0",
     "pdfmake": "^0.1.37",
     "rxjs": "^6.0.0",
     "zone.js": "^0.8.26"

@@ -1,13 +1,23 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { BaseComponent } from '../shared/base/base.component';
+import { LoginService } from './login.service';
+declare var jQuery: any;
+
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
   styleUrls: ['./login.component.css']
 })
-export class LoginComponent implements OnInit {
+export class LoginComponent extends BaseComponent implements OnInit {
 
-  constructor(private router: Router) { }
+  public iUserId: string;
+  public iPassword: string;
+  
+
+  constructor(private router: Router,private loginservice:LoginService) {
+    super();
+   }
 
   ngOnInit() {
 
@@ -18,9 +28,57 @@ export class LoginComponent implements OnInit {
    * login
    */
   public login() {
-     let link = ['/menu'];
-    //  this.router.navigate(link);
-    this.router.navigate(['/menu']);
+
+    var nilaiSimpan = {
+
+      "userid": this.iUserId,
+      "password": this.iPassword
+
+  };
+    
+    this.ajaxKecil = 0;
+    this.loginservice.login(nilaiSimpan)
+        .subscribe(
+        data => {
+            if (data[0].token==="kosong"){
+                
+                this.setPesan = {
+                    "judulPesan": "Warning",
+                    "isiPesan": "Isian User/Password tidak sesuai",
+                    "jenisPesan": 1
+                };
+                setTimeout(function() {
+                    jQuery('#ctnpesan').modal('show');    
+                }, 500);
+                 this.ajaxKecil = 1;
+                 this.loginservice.isLoggedIn=false;
+                 return;
+            }else {
+                this.loginservice.isLoggedIn=true;
+               
+                localStorage.setItem('token',data[0].token);
+                localStorage.setItem('kdanak',"");
+                localStorage.setItem('kdsubanak',"");                
+                let link = ['/menu'];
+                this.router.navigate(['/menu']);
+            }
+        },
+        error => {
+            // console.log(error);
+             this.setPesan = {
+                    "judulPesan": "Warning",
+                    "isiPesan": "Isian User/Password tidak sesuai",
+                    "jenisPesan": 1
+                };
+                setTimeout(function() {
+                    jQuery('#ctnpesan').modal('show');    
+                }, 500);
+                this.ajaxKecil = 1;
+        }
+        );
+
+
+ 
     
   }
 

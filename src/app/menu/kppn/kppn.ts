@@ -1,4 +1,4 @@
-export class KPPN{
+export class Kppn{
     kdkppn:string;
     nmkppn:string;
 }
