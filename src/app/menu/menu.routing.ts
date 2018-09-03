@@ -1,9 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { MenuComponent } from './menu.component';
-import { LoginComponent } from '../login/login.component';
 import { KppnComponent } from './kppn/kppn.component';
 import { SatkerComponent } from './satker/satker.component';
+import { KosongComponent } from './kosong/kosong.component';
+import { AuthGuard } from '../auth-guard.service';
 
 
 const MenuRoutes: Routes = [
@@ -11,13 +12,13 @@ const MenuRoutes: Routes = [
         path: 'menu',
         component: MenuComponent,
         // canActivateChild: [AuthGuard],
-         children: [
-          { path: 'satker', component: SatkerComponent },
-          { path: 'kppn', component: KppnComponent }
-        
-    ]
-    },
+        children: [
+            { path: 'satker', component: SatkerComponent },
+            { path: 'kppn', component: KppnComponent },
+            { path: '**', component: KosongComponent }
+        ]
 
+    }
 ];
 
 @NgModule({
@@ -28,7 +29,6 @@ const MenuRoutes: Routes = [
         RouterModule
     ]
 })
-
-export class MenuRouting { }
+export class MenuRoutingModule { }
 
 

@@ -5,11 +5,9 @@ import { NgxsReduxDevtoolsPluginModule } from '@ngxs/devtools-plugin';
 import { NgxsLoggerPluginModule } from '@ngxs/logger-plugin';
 import { AppComponent } from './app.component';
 import { LoginModule } from './login/login.module';
-import { routing } from './app.routing';
+import { AppRoutingModule } from './app.routing';
 import { MenuModule } from './menu/menu.module';
-
-
-
+import { UserState } from './store/state/user.state';
 
 @NgModule({
   declarations: [
@@ -18,10 +16,10 @@ import { MenuModule } from './menu/menu.module';
   imports: [
     BrowserModule,
     LoginModule,
-    routing,
+    AppRoutingModule,
     MenuModule,
     NgxsModule.forRoot([
-      
+      UserState
     ]),
     NgxsReduxDevtoolsPluginModule.forRoot(),
     NgxsLoggerPluginModule.forRoot()

@@ -2,6 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { BaseComponent } from '../shared/base/base.component';
 import { LoginService } from './login.service';
+import { Store } from '@ngxs/store';
+import { LoginUser } from '../store/actions/user.action';
+
+
 declare var jQuery: any;
 
 @Component({
@@ -15,13 +19,14 @@ export class LoginComponent extends BaseComponent implements OnInit {
   public iPassword: string;
   
 
-  constructor(private router: Router,private loginservice:LoginService) {
+  constructor(private router: Router,private loginservice:LoginService,private store: Store) {
     super();
    }
 
   ngOnInit() {
 
     document.body.className = '"hold-transition login-page';
+    this.ajaxKecil = 1;
   }
 
   /**
@@ -54,8 +59,18 @@ export class LoginComponent extends BaseComponent implements OnInit {
                  this.loginservice.isLoggedIn=false;
                  return;
             }else {
+
+                this.store.dispatch(new LoginUser(
+                  {
+                  kdsatker:data[0].kdsatker,
+                  kdanak:data[0].kdanak,
+                  kdsubanak:data[0].kdsubanak,
+                  token:data[0].token,
+                  }
+               ))
+
                 this.loginservice.isLoggedIn=true;
-               
+                localStorage.setItem('kdsatker',data[0].kdsatker);
                 localStorage.setItem('token',data[0].token);
                 localStorage.setItem('kdanak',"");
                 localStorage.setItem('kdsubanak',"");                

@@ -11,7 +11,7 @@ import { HttpClient } from '@angular/common/http';
 })
 export class LoginService extends BaseService {
     public isLoggedIn: boolean = false;
-
+    public redirectUrl: string;
     constructor(private http: HttpClient) {
         super();
 

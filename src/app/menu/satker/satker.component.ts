@@ -4,6 +4,8 @@ import { Router } from '@angular/router';
 import { SatkerService } from './satker.service';
 import { Satker } from './satker';
 import { Pesan } from '../../shared/pesan/pesan';
+import { Store } from '@ngxs/store';
+import { LoginUser } from '../../store/actions/user.action';
 declare var jQuery: any;
 
 
@@ -31,7 +33,7 @@ export class SatkerComponent extends BaseComponent implements OnInit {
     //isikan untuk pesan
     setPesan: Pesan;
 
-    constructor(private router: Router, public satkerservice: SatkerService) {
+    constructor(private router: Router, public satkerservice: SatkerService,private store:Store) {
         super();
 
     }
