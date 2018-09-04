@@ -3,7 +3,7 @@ import { Store,Select } from '@ngxs/store';
 import { Observable } from 'rxjs';
 import { User } from '../store/models/User';
 import { UserState } from '../store/state/user.state';
-
+import { LoginUser } from '../store/actions/user.action';
 
 declare var $;
 

@@ -8,6 +8,7 @@ import { LoginModule } from './login/login.module';
 import { AppRoutingModule } from './app.routing';
 import { MenuModule } from './menu/menu.module';
 import { UserState } from './store/state/user.state';
+import { NgxsStoragePluginModule } from '@ngxs/storage-plugin';
 
 @NgModule({
   declarations: [
@@ -21,6 +22,7 @@ import { UserState } from './store/state/user.state';
     NgxsModule.forRoot([
       UserState
     ]),
+    NgxsStoragePluginModule.forRoot(),
     NgxsReduxDevtoolsPluginModule.forRoot(),
     NgxsLoggerPluginModule.forRoot()
   ],

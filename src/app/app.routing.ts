@@ -13,7 +13,7 @@ const appRoutes: Routes = [
     {
       path: 'menu',
       component: MenuComponent,
-      canActivate: [AuthGuard],
+      // canActivate: [AuthGuard],
     },
     { path: '',   redirectTo: '/login', pathMatch: 'full' },
     // { path: '**',   redirectTo: '/login', pathMatch: 'full' },
