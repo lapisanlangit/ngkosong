@@ -33,7 +33,7 @@ export class LoginComponent extends BaseComponent implements OnInit {
      * login
      */
     public login() {
-        console.log(212)
+        
 
         var nilaiSimpan = {
 
@@ -60,7 +60,7 @@ export class LoginComponent extends BaseComponent implements OnInit {
                         this.loginservice.isLoggedIn = false;
                         return;
                     } else {
-
+                        
                         this.store.dispatch(new LoginUser(
                             {
                                 kdsatker: data[0].kdsatker,
@@ -69,7 +69,6 @@ export class LoginComponent extends BaseComponent implements OnInit {
                                 token: data[0].token,
                             }
                         ))
-
                         this.loginservice.isLoggedIn = true;
                         localStorage.setItem('kdsatker', data[0].kdsatker);
                         localStorage.setItem('token', data[0].token);

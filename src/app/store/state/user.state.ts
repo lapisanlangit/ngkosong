@@ -30,6 +30,7 @@ export class UserState {
     @Action(LoginUser)
     login(ctx: StateContext<UserStateModel>, action: LoginUser) {
         const state = ctx.getState();
+        // console.log(state)
         ctx.setState({
             ...state,
             users: [
