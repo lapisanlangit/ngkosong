@@ -53,4 +53,13 @@ export class SatkerService extends BaseService {
         catchError(this.handleError) // then handle the error
       );
   }
+
+  
+  public getDetailSatker(ckdSatker): Observable<any[]> {
+    return this.http.get<any[]>(this.URL_ROOT + 'rsatker/getDetailSatker?kdsatker='+ckdSatker)
+      .pipe(
+        retry(3),
+        catchError(this.handleError) // then handle the error
+      );
+  }
 }

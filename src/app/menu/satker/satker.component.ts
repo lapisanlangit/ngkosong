@@ -1,4 +1,4 @@
-import { Component, OnInit, Input } from '@angular/core';
+import { Component, OnInit, OnDestroy  } from '@angular/core';
 import { BaseComponent } from '../../shared/base/base.component';
 import { Router } from '@angular/router';
 import { SatkerService } from './satker.service';
@@ -6,6 +6,8 @@ import { Satker } from './satker';
 import { Pesan } from '../../shared/pesan/pesan';
 import { Store } from '@ngxs/store';
 import { LoginUser } from '../../store/actions/user.action';
+import { Subscription, Subject} from 'rxjs';
+import { switchMap, map } from 'rxjs/operators';
 declare var jQuery: any;
 
 
@@ -15,7 +17,7 @@ declare var jQuery: any;
 
 })
 
-export class SatkerComponent extends BaseComponent implements OnInit {
+export class SatkerComponent extends BaseComponent implements OnInit,OnDestroy  {
 
     public isiSatker: Satker;
     public listSatker: Satker[];
@@ -25,6 +27,12 @@ export class SatkerComponent extends BaseComponent implements OnInit {
 
     private _rekam = 0;
     private _index = 0;
+    private satkersub:Subscription;
+    private detailsub:Subscription;
+    satkernya = new Subject();
+
+    private kdsatkernya;
+    
 
     public maskkdsatker = [/[0-9]/, /\d/, /\d/];
 
@@ -53,9 +61,11 @@ export class SatkerComponent extends BaseComponent implements OnInit {
 
         };
 
-
+        if(this.satkersub){
+            this.satkersub.unsubscribe();
+        }
         this.ajax = 0;
-        this.satkerservice.getSatker()
+        this.satkersub=this.satkerservice.getSatker()
             .subscribe(
                 data => {
                     this.listSatker = data;
@@ -74,6 +84,62 @@ export class SatkerComponent extends BaseComponent implements OnInit {
 
     }
 
+    public tampilkan(){
+        // if(this.satkersub){
+        //     this.satkersub.unsubscribe();
+        // }
+        this.ajax = 0;
+        setTimeout(() => {
+            this.satkersub=this.satkerservice.getSatker()
+            .subscribe(
+                data => {
+                    this.listSatker = data;
+                    setTimeout(() => {
+                        this.ajax = 1;
+                    }, 3000);
+
+                },
+                error => {
+                    alert("Error get data satker");
+                    return;
+                   
+                }
+            );
+        }, 1000);
+        
+    }
+
+    public detail(satkerinilho:Satker){
+
+        if(this.detailsub){
+            this.detailsub.unsubscribe();
+        }
+
+        setTimeout(() => {
+            this.detailsub=this.satkerservice.getDetailSatker(satkerinilho.kdsatker)
+            .subscribe(data=>{
+                console.log(data);
+            })
+        }, 1000);
+     
+        // console.log(satkerinilho)
+        // let kdsaterPilih=satkerinilho.kdsatker;
+        // this.satkernya
+        // .pipe(
+        //   switchMap((kdsaterPilih) =>
+        //     this.satkerservice.getDetailSatker(kdsaterPilih),
+        //   ),
+        //   map((res: Response) => res.json()),
+        // )
+        // .subscribe(res => {
+        //     console.log("akhir")
+        //     console.log(res)
+        // })
+        // let kdnya=satkernya.kdsatker;
+        //     this.kdsatkernya
+        //     .switchMap((kdnya) => this.satkerservice.getDetailSatker(kdnya)
+        //     .subscribe(res => console.log(res)))
+    }
 
     public rekamData(): void {
 
@@ -264,6 +330,21 @@ export class SatkerComponent extends BaseComponent implements OnInit {
 
     }
 
+    cancleSatker(){
+
+        // if(this.satkersub){
+            this.satkersub.unsubscribe();
+        // }
+        // console.log('cancle1')
+        // this.satkersub.unsubscribe();
+        // console.log('cancle2')
+    }
+
+    ngOnDestroy(): void {
+        //Called once, before the instance is destroyed.
+        //Add 'implements OnDestroy' to the class.
+        this.satkersub.unsubscribe();
+    }
 
 
 

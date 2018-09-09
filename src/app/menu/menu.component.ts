@@ -4,6 +4,7 @@ import { Observable } from 'rxjs';
 import { User } from '../store/models/User';
 import { UserState } from '../store/state/user.state';
 import { LoginUser } from '../store/actions/user.action';
+import { Router } from '@angular/router';
 
 declare var $;
 
@@ -18,7 +19,7 @@ export class MenuComponent implements OnInit {
   
 
   // users$: Observable<User>
-  constructor(private store: Store) { }
+  constructor(private store: Store,private router:Router) { }
 
   ngOnInit() {
 
@@ -31,6 +32,13 @@ export class MenuComponent implements OnInit {
     $(document).ready(function () {
       $('.sidebar-menu').tree()
     })
+
+  }
+
+  public logout() {
+    localStorage.clear();
+    location.reload();
+    this.router.navigate(['/']);
 
   }
 

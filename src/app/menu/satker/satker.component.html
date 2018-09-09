@@ -2,6 +2,8 @@
   <div class="col-md-8">
     <h3>
       <strong>Referensi Satker</strong>
+      <button (click)="tampilkan()">Tampilkan</button>
+      <button (click)="cancleSatker()">Batal</button>
     </h3>
     <app-ajax [ajax]="ajax"></app-ajax>
 
@@ -34,11 +36,11 @@
       <th style="width:50px">Kode
         <span class="glyphicon sort-icon"></span>
 
-        <th style="width: 700px">Nama
+        <th style="width: 600px">Nama
           <span class="glyphicon sort-icon"></span>
         </th>
       
-        <th style="width: 50x">Aksi
+        <th style="width: 100x">Aksi
           <span class="glyphicon sort-icon"></span>
         </th>
 
@@ -50,6 +52,8 @@
       <td>
         <a class="ubah btn btn-primary glyphicon glyphicon-edit" title="Ubah Data" (click)="editData(satker)" id="" role="button"></a>
         <a class="hapus btn btn-danger glyphicon glyphicon-trash" title="Hapus Data" (click)="hapusData(satker)" id="" role="button"></a>
+        <a class="hapus btn btn-danger glyphicon glyphicon-zoom-in" title="Detail" (click)="detail(satker)" id="" role="button"></a>
+        
       </td>
 
 

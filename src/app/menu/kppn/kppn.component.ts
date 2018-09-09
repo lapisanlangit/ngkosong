@@ -4,6 +4,9 @@ import { Router } from '@angular/router';
 import { KppnService } from './kppn.service';
 import { Kppn } from './kppn';
 import { Pesan } from '../../shared/pesan/pesan';
+
+
+
 declare var jQuery: any;
 
 
@@ -19,6 +22,8 @@ export class KppnComponent extends BaseComponent implements OnInit {
     public listKppn: Kppn[];
     public kppnIni: Kppn;
 
+    
+
     public ubah: number = 0;
 
     private _rekam = 0;
@@ -31,6 +36,7 @@ export class KppnComponent extends BaseComponent implements OnInit {
     //isikan untuk pesan
     setPesan: Pesan;
 
+ 
     constructor(private router: Router, public kppnservice: KppnService) {
         super();
 
@@ -45,6 +51,9 @@ export class KppnComponent extends BaseComponent implements OnInit {
 
 
     ngOnInit(): void {
+
+       
+
         this.isiKppn = {
             "kdkppn": "",
             "nmkppn": ""
@@ -262,8 +271,9 @@ export class KppnComponent extends BaseComponent implements OnInit {
 
     }
 
+    
 
-
+   
 
 
 
