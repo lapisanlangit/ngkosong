@@ -9,6 +9,8 @@ import { KppnService } from './kppn/kppn.service';
 import { SatkerFilterPipe } from './satker/satker.pipe';
 import { SatkerService } from './satker/satker.service';
 import { KosongComponent } from './kosong/kosong.component';
+import { UploadComponent } from './upload/upload.component';
+import { UploadService } from './upload/upload.service';
 
 
 
@@ -22,12 +24,14 @@ import { KosongComponent } from './kosong/kosong.component';
     SatkerComponent,
     KppnFilterPipe,
     SatkerFilterPipe,
-    KosongComponent
+    KosongComponent,
+    UploadComponent
 
   ],
   providers: [
     KppnService,
-    SatkerService
+    SatkerService,
+    UploadService
   ],
 })
 export class MenuModule { }

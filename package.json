@@ -29,6 +29,7 @@
     "ngx-pagination": "^3.2.0",
     "pdfmake": "^0.1.37",
     "rxjs": "^6.0.0",
+    "secure-ls": "^1.2.1",
     "zone.js": "^0.8.26"
   },
   "devDependencies": {

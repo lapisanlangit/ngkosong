@@ -7,11 +7,12 @@ import { BaseService } from './base/base.service';
 import { PesanComponent } from './pesan/pesan.component';
 import { AjaxLoaderComponent } from './ajax/ajax-loader.component';
 import { AjaxKecilComponent } from './ajax/ajax-kecil.component';
-
 import { NodataComponent } from './nodata/nodata.component';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { httpInterceptorProviders } from './base/interceptor';
 import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
+import { RibuanPipe } from './ribuan.pipe';
+import { TglIndoPipe } from './tglindo.pipe';
 
 @NgModule({
   imports: [
@@ -25,6 +26,8 @@ import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
     NodataComponent,
     AjaxLoaderComponent,
     AjaxKecilComponent,
+    RibuanPipe,
+    TglIndoPipe
   ],
   exports: [
     CommonModule,
@@ -35,7 +38,9 @@ import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
     HttpClientModule,
     AjaxKecilComponent,
     AjaxLoaderComponent,
-    NgxPaginationModule
+    NgxPaginationModule,
+    RibuanPipe,
+    TglIndoPipe
 ],
   providers: [
     BaseService,
