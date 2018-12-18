@@ -10,7 +10,7 @@ import { AjaxKecilComponent } from './ajax/ajax-kecil.component';
 import { NodataComponent } from './nodata/nodata.component';
 import { HashLocationStrategy, LocationStrategy } from '@angular/common';
 import { httpInterceptorProviders } from './base/interceptor';
-import {NgxPaginationModule} from 'ngx-pagination'; // <-- import the module
+import { NgxPaginationModule } from 'ngx-pagination'; // <-- import the module
 import { RibuanPipe } from './ribuan.pipe';
 import { TglIndoPipe } from './tglindo.pipe';
 
@@ -41,11 +41,11 @@ import { TglIndoPipe } from './tglindo.pipe';
     NgxPaginationModule,
     RibuanPipe,
     TglIndoPipe
-],
+  ],
   providers: [
     BaseService,
     httpInterceptorProviders,
     { provide: LocationStrategy, useClass: HashLocationStrategy }
-]
+  ]
 })
 export class SharedModule { }
