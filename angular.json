@@ -35,6 +35,8 @@
             "scripts": [
               "src/assets/bower_components/jquery/dist/jquery.min.js",
               "src/assets/bower_components/bootstrap/dist/js/bootstrap.min.js",
+              "./node_modules/pdfmake/build/pdfmake.min.js",
+              "./node_modules/pdfmake/build/vfs_fonts.js",
               "src/assets/plugins/iCheck/icheck.min.js",
               "src/assets/bower_components/fastclick/lib/fastclick.js",
               "src/assets/dist/js/adminlte.min.js",

@@ -9,7 +9,7 @@ import { LoginUser } from '../../store/actions/user.action';
 import { Subscription, Subject} from 'rxjs';
 import { switchMap, map } from 'rxjs/operators';
 declare var jQuery: any;
-
+declare var pdfMake: any;
 
 @Component({
     selector: 'app-satker', // moduleId: module.id,
@@ -82,6 +82,20 @@ export class SatkerComponent extends BaseComponent implements OnInit,OnDestroy  
             );
 
 
+    }
+
+    public cetak(){
+
+
+        var dd = {
+            content: [
+                'First paragraph',
+                'Another paragraph, this time a little bit longer to make sure, this line will be divided into at least two lines'
+            ]
+            
+        }
+        pdfMake.createPdf(dd).open();
+        
     }
 
     public tampilkan(){
